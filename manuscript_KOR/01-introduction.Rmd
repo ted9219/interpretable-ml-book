@@ -1,0 +1,32 @@
+# Introduction {#intro}
+
+이 책은 당신에게 기계학습 모델 machine learning models (특히, 지도학습 모델 supervised model)이 어떻게 해석 가능한지 interpretable 설명하기 위해 제작되었습니다. 
+각 챕터에는 몇몇 수식을 포함하고 있지만, 수식 자체 보다는 방법론과 기본 개념을 이해하는데 초점을 맞추시길 바랍니다.
+이 책은 기계학습에 대해서 배우고자 하는 분들께 적합한 책은 아님을 알립니다. 
+기계학습에 입문하는 분들이라면, 기초를 다지기 위한 다른 도서 혹은 자료들이 많이 있습니다.
+저는(저자) Hastie, Tibshirani, Freidman의 "The Elements of Statistical Learning" (2009) [^Hastie] 과 온라인 교육 플랫폼 coursera에서 제공하는  [Andrew Ng의 Machine Learning 온라인 코스](https://www.coursera.org/learn/machine-learning) 을 추천합니다.
+도서와 온라인 코스 모두 무료로 이용 가능합니다.
+기계학습 모델의 해석에 대한 새로운 방법론들은 매우 빠른 속도로 등장하고 있습니다.
+새롭게 등장하는 모든 내용에 대해서 다루는 것은 거의 불가능합니다.
+따라서 독자분들께서는 본 책을 통하여 최신의 방법론을 배우기 보다는, 기계학습 해석에 대하여 잘 정립된 기본 개념을 숙지하시는데 중점을 두시기를 바랍니다. 
+이러한 기본 개념들을 잘 숙지하는 것은 추후 독자 여러분이 기계학습 모델을 해석 가능하도록 준비시켜 줄 것 입니다.
+이 책에 담겨진 기본 개념들을 응용하면, 논문 아카이브 [arxiv.org](https://arxiv.org/)에 5분마다 출판되는(과장을 조금 보태어 볼 때) 기계학습 모델의 해석에 관한 새로운 논문을 더 잘 이해하고, 평가할 수 있으리라 생각합니다. 
+이 책은 [짧은 이야기](#storytime)로 시작합니다. 넘어 가셔도 책을 이해하는데 지장은 없지만, 바라건대 읽어보시고 곰곰히 생각해보시기를 바랍니다.
+그 이후 [기계학습 해석 가능성](#interpretability)의 개념들을 소개합니다.
+여러분들은 어떤 상황에서 기계 학습의 해석 가능성이 중요하며, 어떤 종류의 해석 방법이 있는지를 살펴보게 될 것 입니다.
+본 책에서 사용하는 용어들은 [용어색인](#terminology)에서 확인하실 수  있습니다. 
+설명하는 모델과 방법론의 대부분은 실제 데이터 샘플을 활용하여 설명하였으며, [데이터 샘플](#data)에서 확인하실 수 있습니다.
+기계학습 모델을 해석 가능하도록 만드는 한가지 방법은 선형 모델이나 의사결정나무와 같은 원래 [해석이 가능한 알고리즘](#simple)을 사용하여 모델을 만드는 것입니다.
+The other option is the use of [model-agnostic interpretation tools](#agnostic) that can be applied to any supervised machine learning model.
+또 한가지 방법은 모든 지도 학습 모델에 활용가능한 애그노스틱 모델 해석 도구 [model-agnostics interpretation tools](#agnostics) (역자주: 모델 알고리즘 종류에 특이적이지 않고 범용적으로 활용할 수 있는 해석 방법. 불가지론적 모델 해석 도구) 를 사용하는 것입니다. 
+애그노스틱 모델 해석 방법 단원에서는 부분 의존도 도식 partial dependence plots 과 순열 특성 중요도 permutation feature importance 와 같은 방법들을 다루게 됩니다. 
+애그노스틱 모델 해석 방법들은 모델 입력 model input 을 변화시키고 이에 다른 예측 결과 prediction output 의 변화를 측정하여 계산됩니다.
+데이터 인스턴스로 모델의 해석을 표현하는 불가지론적 모델 해석 방법들은 [예제 기반 해석](#example-based)에서 다루었습니다.
+모든 애그노스틱 모델 해석 방법들은 개별 예측에 대하여 설명하는지 혹은 전체 데이터에 대한 모델의 전반적인 행태를 설명하는지에 따라서 더욱 세분화 할 수 있다.
+다음과 같은 방법들은 모델의 전반적인 행태에 대하여 설명한다: [Partial Dependence Plots](#pdp), [Accumulated Local Effects](#ale), [Feature Interaction](#interaction), [Feature Importance](#feature-importance), [Global Surrogate Models](#global) and [Prototypes and Criticisms](#proto).
+반면, 다음과 같은 방법들은 개별 예측에 대하여 설명한다: [Local Surrogate Models](#lime), [Shapley Value Explanations](#shapley), [Counterfactual Explanations](#counterfactual) (and closely related: [Adversarial Examples](#adversarial)). 
+일부 방법들은 전반적인 행태와 개별 예측 설명에 모두 활용할 수 있다: [Individual Conditional Expectation](#ice) and [Influential Instances](#influential).
+이 책은 [해석가능한 기계학습의 미래](#future) 가 어떤 모습일지에 대하여 낙관적인 전망을 가지고 결론짓습니다.
+독자분들께서는 필요에 따라 책 전부를 읽으시거나, 혹은 관심이 있는 부분만 읽으시는 것도 가능합니다. 모든 독자분들 께서 즐겁게 읽으시기를 바랍니다.
+
+[^Hastie]: Friedman, Jerome, Trevor Hastie, and Robert Tibshirani. "The elements of statistical learning". www.web.stanford.edu/~hastie/ElemStatLearn/  (2009).

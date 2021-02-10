@@ -30,7 +30,7 @@ devtools::install_deps()
 
 For rendering the book, start an R session and type:
 ```{r}
-setwd("manuscript")
+setwd("manuscript_KOR")
 # first, generate the references
 source("../scripts/references.R")
 bookdown::render_book('', 'bookdown::gitbook')
@@ -155,3 +155,4 @@ All notable changes to the book will be documented here.
 
 ### v0.1 (2017-12-03)
 - First release of the Interpretable Machine Learning book
+
