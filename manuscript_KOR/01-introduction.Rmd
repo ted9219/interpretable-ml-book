@@ -1,4 +1,4 @@
-# Introduction {#intro}
+# 서론 {#intro}
 
 이 책은 당신에게 기계학습 모델 machine learning models (특히, 지도학습 모델 supervised model)이 어떻게 해석 가능한지 interpretable 설명하기 위해 제작되었습니다. 
 각 챕터에는 몇몇 수식을 포함하고 있지만, 수식 자체 보다는 방법론과 기본 개념을 이해하는데 초점을 맞추시길 바랍니다.
