@@ -8,27 +8,26 @@ install.packages("../pkg/sbrl_1.2.tar.gz", repos = NULL, type = "source")
 ```
 
 
-# Summary {-}
+# 간추린 글 {-}
 ```{r cover, cache=FALSE, eval = is.html, out.width=500, fig.align="center"}
 knitr::include_graphics('images/title_page.jpg', dpi = NA)
 ```
 
-Machine learning has great potential for improving products, processes and research.
-But **computers usually do not explain their predictions** which is a barrier to the adoption of machine learning.
-This book is about making machine learning models and their decisions interpretable.
+기계학습은 생산성 증가, 업무 프로세스의 개선, 연구 성과 등에 대하여 강력한 잠재력을 가지고 있습니다.
+하지만, **컴퓨터는 스스로 그 결과를 충분히 설명하지 못하는데,** 이러한 점은 기계학습의 도입에  걸림돌로 작용하게 됩니다.
+이 책은 기계학습 모델을 개발하는 것과 그 결과의 해석 가능성(해석력, Interpretability)에 초점을 맞추었습니다.
 
-After exploring the concepts of interpretability, you will learn about simple, **interpretable models** such as decision trees, decision rules and linear regression.
-Later chapters focus on general model-agnostic methods for **interpreting black box models** like feature importance and accumulated local effects and explaining individual predictions with Shapley values and LIME.
+해석력에 대한 개괄적인 설명 이후, 당신은 **해석가능한 모델**(의사결정 나무, 의사결정 규칙, 선형회귀)에 대하여 간략히 배우게 될것입니다. 
+이후 단원에서는 블랙박스 모형을 해석하기 위하여 일반적으로 사용하는 모델 애그노스틱 _model-agnostic_ 한 방법론(feature importance, accumulated local effects, Shapley value, LIME)을 살펴볼 것입니다.
 
-All interpretation methods are explained in depth and discussed critically.
-How do they work under the hood?
-What are their strengths and weaknesses?
-How can their outputs be interpreted?
-This book will enable you to select and correctly apply the interpretation method that is most suitable for your machine learning project.
+모든 모델 해석 방법들은 심도있게 설명하였으며, 충분히 논의하였습니다.
+그것들은 내부에서 어떠한 원리로 동작하는가?
+그것들 각각의 장/단점은 무엇인가?
+그 방법으로 부터 나온 결과를 어떻게 해석해야하는가?
+이 책은 진행중인 기계학습 프로젝트에 있어서 당신이 가장 적절한 모델 해석 방법을 선정하고 적용하도록 해줄 것입니다.
 
-The book focuses on machine learning models for tabular data (also called relational or structured data) and less on computer vision and natural language processing tasks.
-Reading the book is recommended for machine learning practitioners, data scientists, statisticians, and anyone else interested in making machine learning models interpretable.
-
+이 책은 컴퓨터 비전 혹은 자연어처리와 같은 영역보다는 표형식의 데이터 _tabular data_ (혹은 관계형 데이터, 구조화 데이터)를 활용한 기계학습 모델에 초점을 맞추고 있습니다.
+기계학습을 공부하는 분, 데이터사이언티스트, 통계학자, 혹은 기계학습을 해석가능하도록 만드는데 관심이 있는 모든 분들에게 본 책을 추천드립니다.
 
 `r if(is.html){"You can buy the PDF and e-book version (epub, mobi) [on leanpub.com](https://leanpub.com/interpretable-machine-learning)."}`
 
@@ -45,6 +44,7 @@ Follow me on Twitter! [\@ChristophMolnar](https://twitter.com/ChristophMolnar)
 
 Cover by [\@YvonneDoinel](https://twitter.com/YvonneDoinel)
 
+Translation to Korean: Chungsoo Kim (ted9219@gmail.com)
 
 `r if(is.html){"![Creative Commons License](images/by-nc-sa.png)"}`
 
@@ -52,79 +52,79 @@ Cover by [\@YvonneDoinel](https://twitter.com/YvonneDoinel)
 
 
 
-# Preface by the Author {-}
+# 펴내는 글 {-}
 
-This book started as a side project when I was working as a statistician in clinical research.
-I worked 4 days a week, and on my "day off" I worked on side projects.
-Eventually, interpretable machine learning became one of my side projects.
-At first I had no intention of writing a book.
-Instead, I was simply interested in finding out more about interpretable machine learning and was looking for good resources to learn from.
-Given the success of machine learning and the importance of interpretability, I expected that there would be tons of books and tutorials on this topic.
-But I only found the relevant research papers and a few blog posts scattered around the internet, but nothing with a good overview.
-No books, no tutorials, no overview papers, nothing.
-This gap inspired me to start this book.
-I ended up writing the book I wished was available when I began my study of interpretable machine learning.
-My intention with this book was twofold: to learn for myself and to share this new knowledge with others.
+이 책은 제가 통계학자로서 임상 연구를 수행하는 도중 부수적인 프로젝트로 시작하게 되었습니다.
+저는 주 4일을 근무하므로, 오프인 날은 주로 부수적인 프로젝트들을 작업합니다.
+결론적으로, 해석가능한 기계학습 은 제 부수적인 프로젝트 중 하나였습니다.
+처음에는 본 내용으로 책을 집필하리라는 생각은 하지 않았습니다.
+대신, 저는 처음에 모델의 해석력에 대한 관심이 있었고, 배울수 있는 좋은 자료들을 찾고자 하였습니다.
+기계학습은 최근들어 굉장히 성공했고, 해석력에 대한 중요성도 잘 알려져 있었기 때문에, 당연히 많은 참고 서적들과 튜토리얼 자료들이 있을 것이라고 기대했습니다.
+하지만, 몇몇 관련된 연구 논문들과 인터넷에 여기저기 퍼져있는 블로그 포스트들 뿐, 전체를 개괄하는 자료는 찾기 어려웠습니다.
+책도 없고, 튜토리얼 자료도 없고, 개괄적인 논문들 어느것도 없었습니다.
+이러한 부족함이 책을 집필해야겠다는 생각을 들도록 만들었습니다.
+나는 해석가능한 기계학습연구를 시작할때 쯤 참고할 수 있도록 책을 작성하였습니다.
+이 책의 목적은 첫번째로는 제 스스로 공부하는 것이고, 두번째로는 이 지식들을 다른이들과 공유하는 것입니다.
+<!-- 저자 소개 -->
+저는 독일의 LMU Munich 에서 통계학 학사, 석사를 받았습니다.
+기계학습에 대한 대부분의 지식은 온라인 강의, 경진대회, 부수적인 프로젝트들과 활동들에서 스스로 학습한 것입니다.
+제 통계적인 배경지식은 기계학습과 특히 기계학습의 해석력을 공부하는데 훌륭한 기반이 되었습니다.
+통계학에서의 제 주 관심 분야는 해석가능한 회귀 모형을 만드는 것이었습니다.
+제 통계학 석사 학위를 마치고 나니, 석사 과정동안 연구를 즐기지 못하였고, 논문 작성에 많은 스트레스를 느껴 박사과정으로의 진학을 포기하였습니다.
+이후 저는 핀테크 스타트업 에서 데이터사이언티스트, 임상 연구에서 통계학자로 일해왔습니다.
+사회에서의 3년이 지나고 저는 이 책을 작성하기 시작했으며, 몇달 후 해석가능한 기계학습을 주제로 박사과정을 시작하였습니다. 
+이 책을 집필하면서, 저는 집필에 대한 즐거움을 다시 찾았고, 결과적으로 연구에 대한 열정을 다시 불러일으켜주었습니다.
 
-<!-- Introduction to Author -->
-I received my bachelor's and master's degree in statistics at the LMU Munich, Germany.
-Most of my knowledge about machine learning was self-taught through online courses, competitions, side projects and professional activities.
-My statistical background was an excellent basis for getting into machine learning, and especially for interpretability.
-In statistics, a major focus is on building interpretable regression models.
-After I finished my master's degree in statistics, I decided not to pursue a PhD, because I did not enjoy writing my master's thesis.
-Writing just stressed me out too much.
-So I took jobs as data scientist in a Fintech start-up and as statistician in clinical research.
-After these three years in industry I started writing this book and a few months later I started a PhD in interpretable machine learning.
-By starting this book, I regained the joy of writing and it helped me to develop a passion for research.
+이 책은 해석가능한 기계학습에 관한 많은 테크닉들을 두루 다루고 있습니다. 
+첫 번째 단원에서 저는 해석력에 대한 기본 개념과 왜 모델의 해석이 필요한지에 대하여 간략히 소개합니다.
+(그리고 몇몇 짧은 이야기들도 적어놓았습니다!)
+이 책은 모델 설명에 대한 서로 다른 특성들에 대하여 논의하며, 사용자가 이해하고 사용하기에 좋은 설명법이 무엇인지 생각해봅니다.
 
-This book covers many techniques of interpretable machine learning.
-In the first chapters I introduce the concept of interpretability and motivate why interpretability is necessary.
-There are even some short stories!
-The book discusses the different properties of explanations and what humans think is a good explanation.
-Then we will discuss machine learning models that are inherently interpretable, for example regression models and decision trees.
-The main focus of this book is on model-agnostic interpretability methods.
-Model-agnostic means that these methods can be applied to any machine learning model and are applied after the model has been trained.
-The independence of the model makes model-agnostic methods very flexible and powerful.
-Some techniques explain how individual predictions were made, like local interpretable model-agnostic explanations (LIME) and Shapley values.
-Other techniques describe the average behavior of the model across a dataset.
-Here we learn about the partial dependence plot, accumulated local effects, permutation feature importance and many other methods.
-A special category are example-based methods that produce data points as explanations.
-Counterfactual explanations, prototypes, influential instances and adversarial examples are example-based methods that are discussed in this book.
-The book concludes with some reflections on what the future of interpretable machine learning might look like.
+그리고 우리는 이미 해석가능하다고 여겨지는 회귀모형과 의사결정 나무와 같은 기계학습 방법들에 대하여 논의합니다.
+이 책의 주요 초점은 사실 모델 애그노스틱 _model-agnostic_ 해석 방법론들입니다.
+모델 애그노스틱이란 모델의 알고리즘 종류와 상관없이 적용 가능하고, 이미 학습된 모델에도 적용할 수 있는 방법론입니다.
+기계학습 모델과의 독립성은 모델 애그노스틱 방법론을 매우 유연하고 강력하게 합니다.
+Local interpretable model-agnostic explanations (LIME), Shapley value 와 같은 몇몇 방법들은 개별 예측이 어떻게 이러한 결정을 하게 되었는지 설명합니다.
+나머지 방법들은 주어진 데이터에 대한 모델의 전반적인 행태에 관하여 기술합니다.
+이에 해당하는 것으로 부분 의존도 곡선 _partial dependence plot_, 누적 국소효과 _accumulated local effects_, 순열 특성 중요도 _permutation feature importance_ 등과 여러 방법들을 이 책에서 다루게 됩니다.
+특정 데이터 포인트를 설정하여 모델을 설명하는 방법인 예제 기반 해석 방법들도 별도의 카테고리로 다루었습니다.
+본 책에서는 반사실적 설명 _Counterfactual explanations_, 프로토타입 _prototypes_, 주요 인스턴스 _influential instalnce_ 와 적대적 예제 _adversarial examples_ 등의 방법을 논의합니다.
+마지막으로, 본 책은 해석가능한 기계학습이 미래에는 어떠한 모습일지를 그리며 마무리합니다.
 
-You do not have to read the book from cover to cover, you can jump back and forth and concentrate on the techniques that interest you most.
-I only recommend that you start with the introduction and the chapter on interpretability.
-Most chapters follow a similar structure and focus on one interpretation method.
-The first paragraph summarizes the method.
-Then I try to explain the method intuitively without relying on mathematical formulas.
-Then we look at the theory of the method to get a deep understanding of how it works.
-You will not be spared here, because the theory will contain formulas.
-I believe that a new method is best understood using examples.
-Therefore, each method is applied to real data.
-Some people say that statistician are very critical people.
-For me, this is true, because each chapter contains critical discussions about advantages and disadvantages of the respective interpretation method.
-This book is not an advertisement for the methods, but it should help you decide whether a method works well for your application or not.
-In the last section of each chapter, available software implementations are discussed.
+독자분들은 반드시 이 책을 서론부터 끝까지 읽으실 필요는 없습니다.
+언제든지 필요한 부분으로 건너뛰어서 읽고 관심이 있고 필요한 부분에 집중하시면 됩니다.
+다만 서론과 모델 해석력에 관한 단원으로 시작하시는 것은 권유드립니다.
+대부분의 단원은 비슷한 구조로 서술하였으며, 대부분 모델의 해석방법에 초점을 맞추고 있습니다.
+첫 단락은 언제나 해당 방법론을 요약정리 하였습니다.
+그리고 저는 수식에 의존하지 않고 해석 방법을 직관적으로 설명하도록 노력하였습니다.
+그 다음 방법론의 이론에 대하여 조금더 깊이 살펴보고 어떻게 작동하는지를 이해하고자 하였습니다.
+모두가 이 부분을 완전히 이해할 필요는 없습니다. (수식을 포함하고 있거든요!)
+저는 예제를 통하는 것이 새로운 방법론을 배우는데 좋다고 생각합니다.
+그래서, 각 방법을 실제 데이터에 적용하였습니다.
+몇몇 이들은 통계학자들은 매우 비판적인 사람들이라고 말합니다.
+저에게도 역시 이 사실은 적용되기 때문에, 각 단원에 해당 방법론에 대한 장점과 단점에 대하여 서술하였습니다.
+이 책은 특정 방법론에 대한 광고는 아니지만, 당신이 활용하고자 하는 방향에서 어떠한 방법론이 적절한지 결정할 수 있도록 도움을 줄 것입니다.
+각 단원의 마지막 부분에는 활용 가능한 소프트웨어를 적어놓았습니다.
 
-Machine learning has received great attention from many people in research and industry.
-Sometimes machine learning is overhyped in the media, but there are many real and impactful applications.
-Machine learning is a powerful technology for products, research and automation.
-Today machine learning is used, for example,  to detect fraudulent financial transactions, recommend movies to watch and classify images.
-It is often crucial that the machine learning models are interpretable.
-Interpretability helps the developer to debug and improve the model, build trust in the model, justify model predictions and gain insights.
-The increased need for machine learning interpretability is a natural consequence of an increased use of machine learning.
-This book has become a valuable resource for many people.
-Teaching instructors use the book to introduce their students to the concepts of interpretable machine learning.
-I received e-mails from various master and doctoral students who told me that this book was the starting point and most important reference for their theses.
-The book has helped applied researchers in the field of ecology, finance, psychology, etc.  who use machine learning to understand their data.
-Data scientists from industry told me that they use the "Interpretable Machine Learning" book for their work and recommend it to their colleagues.
-I am happy that many people can benefit from this book and become experts in model interpretation.
+기계학습은 연구분야와 산업분야에서 점점 더 많은 사람들의 주목을 받고 있습니다.
+때때로, 언론의 과장 보도가 있지만, 실제로도 많은, 의미있는 응용프로그램들은 존재합니다.
+기계학습은 제품 생산, 연구, 자동화에 강력한 기술입니다.
+예를 들어, 오늘날의 기계학습은 불법 금융 거래를 탐지하고, 영화를 추천하고, 이미지를 분류하는데 사용되고 있습니다.
+기계학습 모델을 해석할 수 있어야 하는 경우가 종종 있습니다.
+모델 해석력은 개발자로 하여금 모델을 디버그 및 개선하고, 신뢰도를 높이며, 새로운 지식을 창출하도록 돕습니다.
+기계학습 모델 해석력에 대한 필요 증가는 기계학습 도입 증가에 따른 자연스러운 결과입니다.
+이 책은 많은 사람들에게 중요한 자원으로써 사용될 것입니다.
+강사분들은 이 책을 기계학습 모델 해석에 관한 개괄을 설명하는데 사용하실 수 있을 것입니다.
+또한 저는 많은 석/박사 과정생으로부터 이 책이 그들의 연구 주제에 중요한 참고문헌으로 쓰이고 있다는 메일을 많이 받았습니다.
+이 책은 또한 환경학, 금융학, 심리학 등과 같이 그들의 데이터를 이용하여 기계학습 모델을 사용하는 많은 연구자들을 도와왔습니다.
+산업계의 데이터 사이언티스트들은 실제로 이 책을 그들의 업무에 활용하고 있으며, 동료들에게 추천한다고 말해주었습니다.
+저는 이 책이 많은 이들에게 도움이 되고, 그들이 모델 해석력에 대한 지식이 쌓여가는 모습에 기쁨을 느낍니다.
 
-I would recommend this book to practitioners who want an overview of techniques to make their machine learning models more interpretable.
-It is also recommended to students and researchers (and anyone else) who is interested in the topic.
-To benefit from this book, you should already have a basic understanding of machine learning.
-You should also have a mathematical understanding at university entry level to be able to follow the theory and formulas in this book.
-It should also be possible, however, to understand the intuitive description of the method at the beginning of each chapter without mathematics.
+저는 기계학습 모델의 해석 기술에 대한 개괄적 지식을 얻고 싶은 실무자에게 이 책을 추천합니다.
+또한 저는 이 주제에 대하여 관심있는 학생과 연구자 (혹은 누구든)에게 추천합니다.
+이 책은 이미 기계학습에 대한 기본적인 지식이 있는 사람들을 대상으로 합니다.
+이 책의 이론과 수식을 이해하기 위해서는 대학 학부 수준의 수학적 이해를 필요로 합니다.
+하지만, 각 단원마다 수식을 제외한 직관적인 설명을 실어놓았기 대문에 초심자도 어느정도는 이해하실 수 있을 것이라 생각합니다.
 
-I hope you enjoy the book!
+이 책을 즐겁게 읽으시길 바랍니다!
 

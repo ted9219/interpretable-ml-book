@@ -1,5 +1,4 @@
 base
-libcoin
 data.table
 readr
 knitr
@@ -13,6 +12,7 @@ ParamHelpers
 mlr
 dplyr
 tidyr
+libcoin
 mvtnorm
 partykit
 memoise
@@ -106,6 +106,7 @@ purrr
 ps
 prettyunits
 fs
+tinytex
 magrittr
 matrixStats
 pkgload
